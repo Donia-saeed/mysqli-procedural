@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = $_POST['title'];
     $description = $_POST['description'];
     $price = $_POST['price'];
-    $image = $_POST['image'];
+    $image = 'img1.jpg';
     $category_id = $_POST['category_id'];
 
     if (empty($title) || empty($description) || empty($price) || empty($category_id)) {
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <h1 class="mb-4">Add Product</h1>
-        <form action="createProduct.php" method="post">
+        <form action="createProduct.php" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Name:</label>
                 <input type="text" class="form-control" id="title" name="title" required>

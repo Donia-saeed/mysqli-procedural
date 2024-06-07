@@ -3,7 +3,7 @@ require_once '../database/connection.php';
 
 // Fetch categories from the database
 $conn = get_connection();
-$query = "SELECT * FROM `products` LEFT JOIN `categories` ON products.category_id = categories.id";
+$query = "SELECT `products`.*, `categories`.category_name FROM `products` LEFT JOIN `categories` ON products.category_id = categories.id";
 $result = mysqli_query($conn, $query);
 $products = [];
 while ($row = mysqli_fetch_assoc($result)) {
@@ -12,7 +12,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 
 
 ?>
-
+   
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +20,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
+    <title>Products </title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -50,9 +50,9 @@ while ($row = mysqli_fetch_assoc($result)) {
                 </tr>
             </thead>
             <tbody>
-
+       
                 <?php foreach ($products as $product): ?>
-                <tr>
+                <tr> 
                     <td><?php echo $product['id']; ?></td>
                     <td><?php echo $product['title']; ?></td>
                     <td>$<?php echo $product['price']; ?></td>
